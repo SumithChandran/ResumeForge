@@ -1,0 +1,78 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{parskip}
+\usepackage{fontspec}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[scale=0.9, top=.5in, bottom=.5in]{geometry}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[unicode, draft=false]{hyperref}
+\usepackage{fontawesome5}
+\usepackage[normalem]{ulem}
+
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{1pt}{6pt}{6pt}
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\color[HTML]{1C033C} \Huge{Your Name}\\[6pt]
+\textcolor[HTML]{371e77}{{\faEnvelope} your.email@example.com $|$}
+\textcolor[HTML]{371e77}{{\faMobile} +00-0000000000} $|$
+\textcolor[HTML]{371e77}{\underline{{\raisebox{-0.05\height}{\faLinkedin} linkedin.com/in/your-profile}}}
+\end{tabularx}
+
+\section{Summary}
+Results-oriented engineer with X+ years of experience in cloud infrastructure, automation, and platform reliability.
+
+\section{Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \small{\item{
+    \textbf{Cloud \& Infra}{: Azure, AWS, GCP, Terraform, Kubernetes} \\
+    \textbf{CI/CD \& Automation}{: GitHub Actions, GitLab CI, Bash, Python} \\
+    \textbf{Security \& Networking}{: IAM/RBAC, VNet/VPC, Network Policies} \\
+    \textbf{Monitoring \& Tools}{: Prometheus, Grafana, Linux, Docker}
+  }}
+\end{itemize}
+
+\section{Work Experience}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{1C033C} \textbf{Company Name, City} \hfill \color[HTML]{371e77} Jan 2024 - Present \\
+\color[HTML]{371e77}\textbf{\textit{Role Title}} \hfill \color[HTML]{371e77}\\[3pt]
+\end{tabularx}
+\begin{itemize}[nosep, leftmargin=2em, itemsep=2pt]
+  \item Delivered measurable outcome using specific technologies (for example, reduced deployment time by 50\%).
+  \item Improved reliability/performance/security by implementing a concrete solution.
+  \item Led cross-team collaboration to ship business-critical features.
+\end{itemize}
+
+\vspace{4pt}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{1C033C} \textbf{Previous Company, City} \hfill \color[HTML]{371e77} Jan 2021 - Dec 2023 \\
+\color[HTML]{371e77}\textbf{\textit{Previous Role}} \hfill \color[HTML]{371e77}\\[3pt]
+\end{tabularx}
+\begin{itemize}[nosep, leftmargin=2em, itemsep=2pt]
+  \item Migrated legacy systems to cloud infrastructure with clear cost and uptime gains.
+  \item Built automation to eliminate repetitive operational work.
+\end{itemize}
+
+\section{Education}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{1C033C} \textbf{University Name} & \hfill \color[HTML]{371e77} 2018 - 2020 \\
+\color[HTML]{371e77} Degree Name & \hfill \color[HTML]{371e77} CGPA/GPA: X.XX \\
+\end{tabularx}
+
+\section{Certifications}
+\begin{itemize}[nosep, leftmargin=2em, itemsep=2pt]
+  \item Example Certification 1
+  \item Example Certification 2
+\end{itemize}
+
+\end{document}

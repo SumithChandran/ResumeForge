@@ -1,0 +1,42 @@
+name: Build Resume PDF
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install LaTeX dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-xetex texlive-fonts-extra
+
+      - name: Build PDF
+        run: |
+          if [ -f "resume.tex" ]; then
+            TARGET="resume.tex"
+          elif [ -f "updated.tex" ]; then
+            TARGET="updated.tex"
+          elif [ -f "updated" ]; then
+            cp updated resume.tex
+            TARGET="resume.tex"
+          else
+            echo "No resume source file found."
+            exit 1
+          fi
+
+          xelatex -interaction=nonstopmode -halt-on-error "$TARGET"
+          xelatex -interaction=nonstopmode -halt-on-error "$TARGET"
+
+      - name: Upload PDF artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdf
+          path: "*.pdf"
