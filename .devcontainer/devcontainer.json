@@ -1,0 +1,14 @@
+{
+  "name": "ResumeForge",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "James-Yu.latex-workshop"
+      ]
+    }
+  },
+  "postCreateCommand": "xelatex --version && latexmk -v"
+}

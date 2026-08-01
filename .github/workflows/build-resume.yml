@@ -18,22 +18,27 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y texlive-xetex texlive-fonts-extra
 
-      - name: Build PDF
+      - name: Select resume source
         run: |
           if [ -f "resume.tex" ]; then
-            TARGET="resume.tex"
+            echo "Using resume.tex"
           elif [ -f "updated.tex" ]; then
-            TARGET="updated.tex"
+            cp updated.tex resume.tex
+            echo "Copied updated.tex to resume.tex"
           elif [ -f "updated" ]; then
             cp updated resume.tex
-            TARGET="resume.tex"
+            echo "Copied updated to resume.tex"
           else
             echo "No resume source file found."
             exit 1
           fi
 
-          xelatex -interaction=nonstopmode -halt-on-error "$TARGET"
-          xelatex -interaction=nonstopmode -halt-on-error "$TARGET"
+      - name: Build PDF
+        run: make
+
+      - name: Verify PDF output
+        run: |
+          test -s resume.pdf || { echo "resume.pdf was not generated."; exit 1; }
 
       - name: Upload PDF artifacts
         uses: actions/upload-artifact@v4

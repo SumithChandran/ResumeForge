@@ -1,95 +1,68 @@
 # ResumeForge
 
-Build an ATS-friendly resume with LaTeX templates, live preview, and practical writing guidance.
+Build and maintain an ATS-friendly resume with LaTeX, live preview, and CI validation.
 
-ResumeForge is a reusable LaTeX resume setup that anyone can fork and customize.
+## Start In 2 Minutes
 
-## What You Get
+1. Open this repository in a GitHub Codespace.
+2. Wait for container setup to finish.
+3. Run `make`.
+4. Open `resume.pdf`.
 
-- A working LaTeX resume source file
-- A clean starter template with placeholders
-- Build instructions for local development
-- GitHub Actions workflow to auto-build PDF on push/PR
+## Visual Walkthrough
 
-## Repository Structure
+![Create Codespace](assets/screenshots/1create-codespace.png)
 
-- `resume.tex`: Primary resume source (current version)
-- `resume-template.tex`: Generic starter template for new users
-- `Makefile`: One-command build and clean targets
-- `.github/workflows/build-resume.yml`: CI build workflow
+![Build Resume](assets/screenshots/2build.png)
 
-## Prerequisites (Ubuntu/Debian)
+![Live Preview](assets/screenshots/3watch.png)
 
-Install a LaTeX engine and required packages:
+![CI Pass](assets/screenshots/4action.png)
+
+## Documentation Map
+
+1. User steps: [docs/USER_GUIDE.md](docs/USER_GUIDE.md)
+2. Operator runbook: [docs/RUNBOOK.md](docs/RUNBOOK.md)
+3. Command quick reference: [docs/COMMANDS.md](docs/COMMANDS.md)
+4. Versioning policy: [docs/VERSIONING.md](docs/VERSIONING.md)
+5. Contributor guidance: [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## Repository Layout
+
+1. `resume.tex`: source resume file
+2. `Makefile`: build, watch, and cleanup targets
+3. `.github/workflows/build-resume.yml`: CI pipeline
+4. `.devcontainer/`: Codespaces/devcontainer setup
+5. `assets/screenshots/`: visual guidance images
+
+## Core Commands
+
+1. Build PDF: `make`
+2. Live watch: `make watch`
+3. Clean temp files: `make clean`
+4. Remove temp files and PDF: `make distclean`
+
+## Local Setup (If Not Using Codespaces)
 
 1. `sudo apt-get update`
 2. `sudo apt-get install -y texlive-xetex texlive-fonts-extra latexmk`
+3. `make`
 
-## Quick Start
+## CI Behavior
 
-1. Clone or fork this repository.
-2. Create your resume file:
-	- Option A: Edit `resume.tex` directly.
-	- Option B: Copy `resume-template.tex` to `resume.tex` and then edit.
-3. Build PDF:
-	- `make`
-4. Output file:
-	- `resume.pdf`
+On push and pull request, CI will:
 
-## Useful Commands
+1. Select a resume source (`resume.tex`, `updated.tex`, or `updated`).
+2. Build using `make`.
+3. Fail fast if `resume.pdf` is missing.
+4. Upload generated PDF artifact.
 
-- Build: `make`
-- Live rebuild (watch mode): `make watch`
-- Clean temporary files: `make clean`
-- Remove temporary files and PDFs: `make distclean`
+## Versioning
 
-## Live Preview While Editing (VS Code)
-
-This repo includes VS Code workspace settings for live PDF updates.
-
-Recommended in Codespaces/web VS Code:
-
-1. Open `resume.tex` and `resume.pdf` side by side.
-2. Start watcher from terminal: `make watch`.
-3. Edit `resume.tex` and save.
-4. `resume.pdf` is rebuilt automatically.
-5. Stop watcher with `Ctrl+C` when done (exit code 130 is expected).
-
-Start watcher from VS Code task (no terminal typing):
-
-1. Open command palette.
-2. Run `Tasks: Run Task`.
-3. Select `Resume: Live Preview Watch`.
-
-Optional (if you install LaTeX Workshop):
-
-1. Install `James-Yu.latex-workshop`.
-2. Use `LaTeX Workshop: Build LaTeX project` for compilation automation.
-
-Alternative terminal workflow:
-
-1. Run `make watch` in a terminal.
-2. Keep `resume.pdf` open in VS Code preview.
-
-## Live Preview Troubleshooting
-
-1. If PDF does not refresh, verify watcher output includes `Watching for updated files`.
-2. Re-open the `resume.pdf` tab.
-3. Rebuild once manually: `make distclean && make`.
-4. Start watch mode again: `make watch`.
-
-## Use This As a GitHub Template
-
-1. Push this repository to GitHub.
-2. In GitHub: Settings -> General -> Template repository -> Enable.
-3. Others can click Use this template to create their own resume repo.
-
-## Notes for Contributors
-
-- Keep formatting changes minimal and intentional.
-- Do not commit LaTeX build artifacts (`.aux`, `.log`, `.out`, etc.).
-- Prefer concise bullet points with measurable impact.
+1. Current version: `1.0.0` (from [VERSION](VERSION)).
+2. Changelog: [CHANGELOG.md](CHANGELOG.md).
+3. Policy: [docs/VERSIONING.md](docs/VERSIONING.md).
 
 ## License
 
-This project is licensed under the MIT License. See `LICENSE`.
+MIT. See [LICENSE](LICENSE).
